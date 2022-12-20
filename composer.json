@@ -1,0 +1,43 @@
+{
+    "name": "tjslash/cto-set-image-trait",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Artem Vakylenko",
+            "email": "vakylenkox@gmail.com",
+            "homepage": "https://github.com/tjslash"
+        }
+    ],
+    "homepage": "https://github.com/tjslash/cto-set-image-trait",
+    "keywords": [
+        
+    ],
+    "require": {
+        "illuminate/support": "~8|~9",
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~5|~6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tjslash\\CtoSetImageTrait\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tjslash\\CtoSetImageTrait\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --testdox"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tjslash\\CtoSetImageTrait\\AddonServiceProvider"
+            ]
+        }
+    }
+}
