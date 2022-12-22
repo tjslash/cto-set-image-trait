@@ -12,18 +12,18 @@ trait SetImageTrait
      * Set image attribute
      *
      * @param ?string $value
-     * @param ?string $key
+     * @param ?string $attribute_name
      *
      * @return ?string
      */
-    public function setImage($value, $key = 'image') : ?string
+    public function setImage(?string $value, ?string $attribute_name = 'image') : ?string
     {
-        $options = $this->imageOptions[$key];
+        $options = $this->imageOptions[$attribute_name];
         $disk = Storage::disk($options['disk'] ?? 'public');
 
         // Empty value
-        if ($value === null && $this->attributes[$key]) {
-            $disk->delete($this->attributes[$key]);
+        if ($value === null && $this->{$attribute_name}) {
+            $disk->delete($this->{$attribute_name});
             return null;
         }
 
@@ -34,8 +34,8 @@ trait SetImageTrait
             $filename = md5($value.time()) . '.' . $extension;
             $path = "{$options['destination_path']}/{$filename}";
             $disk->put($path, $image->stream());
-            if ($this->attributes[$key]) {
-                $disk->delete($this->attributes[$key]);
+            if ($this->{$attribute_name}) {
+                $disk->delete($this->{$attribute_name});
             }
             return Storage::url($path);
         }
